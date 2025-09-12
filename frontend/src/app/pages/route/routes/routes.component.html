@@ -1,0 +1,60 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+  <app-account-breadcrumbs></app-account-breadcrumbs>
+</div>
+
+<!-- contenet -->
+<div class="container mb-5 pb-3">
+  <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+    <div class="row">
+      <!-- Sidebar -->
+      <aside class="col-lg-4 pe-xl-5">
+        <app-acount-sidemenu></app-acount-sidemenu>
+      </aside>
+      <!-- Content -->
+      <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+          <!-- Title -->
+          <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+            <h2 class="h3 py-2 me-2 text-center text-sm-start">
+              Mis rutas de aprendizaje
+              <!-- <span class="badge bg-faded-accent fs-sm text-body align-middle ms-2">{{products.length}}</span> -->
+            </h2>
+            <a class="btn btn-accent" (click)="nuevaRuta()">
+              Crear nueva ruta de aprendizaje
+            </a>
+          </div>
+          <!-- Product -->
+          @for(data of listRutas;track $index) {
+            <div class="d-block d-sm-flex align-items-center py-4 border-bottom">
+              <div class="text-center text-sm-start">
+                <h3 class="h6 product-title mb-2">
+                  <a href="javascript:void(0)" routerLink="/single">
+                    {{ data.nombreRuta }}
+                  </a>
+                </h3>
+
+                <div class="d-flex justify-content-center justify-content-sm-start pt-3">
+                  <button class="btn bg-faded-info btn-icon me-2" type="button" data-bs-toggle="tooltip"
+                    ngbTooltip="Editar" (click)="actualizarMisRutas(data.idRoute)">
+                    <i class="ci-edit text-info"></i>
+                  </button>
+                  <button class="btn bg-faded-danger btn-icon" type="button" data-bs-toggle="tooltip"
+                    ngbTooltip="Eliminar" (click)="eliminarMisRutas($index)">
+                    <i class="ci-trash text-danger"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

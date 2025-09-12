@@ -1,0 +1,91 @@
+<footer class="footer bg-darker pt-0">
+
+
+  <div class="content">
+    <img width="250" height="150" data-src="https://inscripcionestdea.com/wp-content/uploads/2021/04/iq-net.png"
+      class="attachment-large size-large wp-image-390 ls-is-cached lazyloaded" alt=""
+      src="https://inscripcionestdea.com/wp-content/uploads/2021/04/iq-net.png"
+      style="--smush-placeholder-width: 250px; --smush-placeholder-aspect-ratio: 250/150;"><noscript><img width="250"
+        height="150" src="https://inscripcionestdea.com/wp-content/uploads/2021/04/iq-net.png"
+        class="attachment-large size-large wp-image-390" alt="" /></noscript>
+
+    <h6 class="elementor-heading-title elementor-size-small">Dirección: Calle 78b No. 72a – 220 Medellín – Colombia –
+      Suramérica Horario de atención al público 7:30 a.m. a 12:00 m. y de 1:00 p.m. a 5:30 p.m. de lunes a jueves, los
+      viernes de 7:30 a.m. a 12:00 m. y 1:00 p.m. a 4:30 p.m. teléfono PBX: (574) 444 37 00 Copacabana: Carrera 50 N°50a
+      – 59 teléfono: 4013997 Itaguí: Institución Educativa Simón Bolívar Calle 65 N° 46a – 95 Teléfono: 2819509 Calle 76
+      N° 49 – 24 Institución Educativa Oreste Sindici Teléfono: 2819509 Calle 80 N° 57 -16 Institución Educativa
+      Benedikta Zur Nieden, teléfono: 2819509
+      correo electrónico exclusivo para recibir notificaciones judiciales: notificacionesjudiciales&#64;tdea.edu.co
+      Atención al usuario: atencionalcliente&#64;tdea.edu.co escriba su denuncia al correo juridica&#64;tdea.edu.co sus
+      datos personales serán protegidos.
+      <b>Tecnológico de Antioquia: Acreditación Institucional de Alta Calidad. Resolución MEN 13167, 17 de julio 2020
+        por 8 años</b><br>Vigilada MinEducación
+    </h6>
+  </div>
+
+
+
+  <div class="container pt-2">
+    <div class="row pb-2">
+      <div class="col-lg-6 col-sm-4 pb-2 mb-4">
+        <div class="mt-n1"><a class="d-inline-block align-middle"><img class="d-block mb-4"
+              src="assets/img/crea-tu-propia-historia-v2-e1618163833488.png" width="957" alt="Cartzilla"></a></div>
+        <div ngbDropdown class="btn-group dropdown disable-autohide">
+
+          <ul ngbDropdownMenu class="dropdown-menu my-1">
+            @for(item of listLang;track $index){
+            <li (click)="setLanguage(item.text, item.lang, item.flag,item.language)">
+              <a class="dropdown-item pb-1" [ngClass]="{'active': cookieValue === item.lang}"
+                href="javascript:void(0);">
+                <img class="me-2" src="{{item.flag}}" width="20" alt="{{item.text}}">{{item.text}}
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-sm-4">
+        <div class="widget widget-links widget-light pb-2 mb-4">
+          <h3 class="widget-title text-light">Paginas oficiales</h3>
+          <ul class="widget-list">
+            <li class="widget-list-item"><a class="widget-list-link" href="https://www.tdea.edu.co/"
+                target="_blank">Tecnológico de Antioquia</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="https://campus.tdea.edu.co/"
+                target="_blank">Campus TdeA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-sm-4">
+        <div class="widget widget-links widget-light pb-2 mb-4">
+          <h3 class="widget-title text-light">Redes sociales TdeA</h3>
+          <ul class="widget-list">
+            <li class="widget-list-item">
+              <a class="widget-list-link" href="https://www.facebook.com/tecdeantioquia" target="_blank">Facebook</a>
+            </li>
+            <li class="widget-list-item"><a class="widget-list-link" href="https://twitter.com/tecdeantioquia?lang=es"
+                target="_blank">Twitter</a></li>
+            <li class="widget-list-item"><a class="widget-list-link"
+                href="https://www.instagram.com/tecnologicodeantioquia/?hl=es-la" target="_blank">Instagram</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="https://www.tdearadio.com/emisora/"
+                target="_blank">TdeA Radio</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <hr class="hr-light mt-md-2 mb-3">
+    <div class="d-md-flex justify-content-between pt-4 pb-1">
+      <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">COPYRIGHT © 2024 TECNOLÓGICO DE ANTIOQUIA.
+        TODOS LOS DERECHOS RESERVADOS.
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<a class="btn-scroll-top" href="javascript:void(0)" [ngxScrollTo]="'#home'" data-scroll>
+  <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Inicio</span>
+  <i class="btn-scroll-top-icon ci-arrow-up"></i>
+</a>

@@ -1,0 +1,52 @@
+<!-- Header -->
+<app-header></app-header>
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+  <app-account-breadcrumbs></app-account-breadcrumbs>
+</div>
+<div class="container mb-5 pb-3">
+  <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+    <div class="row">
+      <!-- Sidebar -->
+      <aside class="col-lg-3 pe-xl-5">
+        <app-acount-sidemenu></app-acount-sidemenu>
+      </aside>
+      <!-- Content -->
+      <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+          <h1>Lista de Categorias</h1>
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Descripción</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of listCategories">
+                <td></td>
+                <td>{{ category.nombreCategoria }}</td>
+                <td>
+                    <button style="margin: 10px;" type="button" class="btn btn-outline-warning" (click)="actualizarCategory(category.idCategoria)"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-outline-danger" (click)="eliminarCategory(category.idCategoria)"><i class="fa-solid fa-user-xmark"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <label for="">Total registros: {{listCategories.totalRecords}}</label>
+          <br />
+          <br />
+          <!-- Create new item -->
+          <div class="d-flex flex-sm-row flex-column">
+            <a class="btn btn-accent" routerLink="/newCategory">
+              Crear nueva categoria
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<app-footer></app-footer>

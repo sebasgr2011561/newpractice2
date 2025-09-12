@@ -1,0 +1,53 @@
+<app-header></app-header>
+<!-- Hero section-->
+<section class="bg-darker bg-size-cover bg-position-center py-5 py-lg-10" style="background-image: url(assets/img/food-delivery/hero-bg.png);">
+    <div class="container pb-1">
+        <div class="row justify-content-center pb-1">
+            <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 text-center">
+                <div class="h2 text-light mb-3 pb-4">Plataforma E-learning para el Estudio &amp; Repaso de temas en ingeniería de software
+                    <div class="dropdown d-inline-block ms-1">EducaTdeA
+                           </div>
+                </div>
+                <a class="btn btn-primary" href="javascript:void(0)" [ngxScrollTo]="'#cuisine'" data-scroll>Recursos de Estudio</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories (cuisine) grid-->
+<section class="container py-4 my-lg-3 py-sm-5" id="cuisine">
+    <h2 class="text-center pt-4 pt-sm-3">Categorías</h2>
+    <p class="text-muted text-center mb-5">Encontraras diferentes contenidos educativos para facilitar más tu comprención de los temas</p>
+    <div class="row">
+        @for(cat of category;track $index){
+        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+            <a class="card border-0 shadow" [routerLink]="['/category/', cat.idCategoria]">
+                <!-- <img class="card-img-top" src="{{cat.imagenPortada}}" alt="Burgers &amp; Fries"> -->
+                <div class="card-body py-4 text-center">
+                    <h3 class="h5 mt-1">{{cat.nombreCategoria}}</h3>
+                </div>
+            </a>
+        </div>
+    }
+    </div>
+</section>
+<!-- Popular restaurants logo grid-->
+<!-- Reviews-->
+<section class="bg-secondary py-5">
+    <section class="container py-4 my-lg-3 py-sm-5" id="cuisine">
+        <h2 class="text-center pt-4 pt-sm-3">Recursos</h2>
+        <div class="row">
+            @for(course of courses;track $index){
+            <div class="col-md-4 col-sm-6 mb-grid-gutter">
+                <a class="card border-0 shadow" (click)="redirectToAuctionLive(course.idRecurso)" >
+                    <img class="card-img-top" src="{{course.imagenPortada}}" alt="{{course.descripcion}}">
+                    <div class="card-body py-4 text-center">
+                        <h3 class="h5 mt-1">{{course.nombreRecurso}}</h3>
+                    </div>
+                </a>
+            </div>
+        }
+        </div>
+    </section>
+</section>
+
+<app-footer></app-footer>

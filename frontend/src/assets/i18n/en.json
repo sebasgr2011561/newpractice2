@@ -1,0 +1,21 @@
+{
+  "MENUITEMS": {
+    "CUISINE": {
+      "TEXT": "Angular",
+      "LIST": {
+        "course1": "Desarrollo Web Front",
+        "course2": "Desarrollo Web Back",
+        "course3": "Pizza & Pasta",
+        "course4": "Grill & Steaks",
+        "Fish&Seafood": "Fish & Seafood",
+        "HealthyFood": "Healthy Food",
+        "HauteCuisine": "Haute Cuisine",
+        "Chicken&Snaks": "Chicken & Snaks",
+        "Coffee&Desserts": "Coffee & Desserts"
+      }
+    },
+    "AcercaT-Educa":"Acerca de T-EDUCA",
+    "Aprender":"Que puedes estudiar"
+
+  }
+}

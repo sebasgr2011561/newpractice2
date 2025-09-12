@@ -1,0 +1,58 @@
+<!-- Sign in / sign up modal-->
+<!-- <ng-template role="document" let-modal> -->
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs card-header-tabs" role="tablist">
+          <li class="nav-item" [ngbNavItem]="1">
+            <a ngbNavLink class="nav-link fw-medium" href="javascript:void(0);" data-bs-toggle="tab" role="tab"
+              aria-selected="true" style="text-align: center;"><i class="ci-unlocked me-2 mt-n1"></i>Iniciar sesión</a>
+            <ng-template ngbNavContent>
+
+              <form (ngSubmit)="signin()" [formGroup]="formData" class="needs-validation tab-pane fade show"
+                id="signin-tab">
+                <div class="mb-3">
+                  <label class="form-label" for="si-email">Correo Electronico</label>
+                  <input class="form-control" type="email" id="si-email"
+                    formControlName="email" [ngClass]="{ 'is-invalid': submitted && form['email'].errors }">
+
+                    @if(submitted && form['email'].errors){
+                    <div class="invalid-feedback">
+                      @if(form['email'].errors['required']){
+                    <span>Por favor, introduzca su correo electronico.</span>
+                      }
+                  </div>
+                }
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="si-password">Contraseña</label>
+                  <div class="password-toggle">
+                    <input class="form-control" [type]="fieldTextType ? 'text' : 'password'" id="si-password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && form['password'].errors }">
+
+                      @if(submitted && form['password'].errors){
+                      <div class="invalid-feedback">
+                        @if(form['password'].errors['required']){
+                      <span>Por favor, introduzca su contraseña.</span>
+                        }
+                    </div>
+                  }
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                     <!-- <i class="mdi mdi-eye"></i> -->
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"
+                        [ngClass]="fieldTextType ? 'mdi-eye-off-outline':'mdi-eye-off-outline'"
+                        (click)="toggleFieldTextType()"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Iniciar</button>
+              </form>
+            </ng-template>
+          </li>
+        </ul>
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" (click)="closemodal()"></button>
+      </div>
+      <div class="modal-body tab-content py-4">
+        <div [ngbNavOutlet]="nav"></div>
+      </div>
+    </div>
+  <!-- </ng-template> -->

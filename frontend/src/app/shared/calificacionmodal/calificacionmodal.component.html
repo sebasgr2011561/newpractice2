@@ -1,0 +1,44 @@
+<!-- Sign in / sign up modal-->
+<!-- <ng-template role="document" let-modal> -->
+    <div class="modal-content">
+        <div class="modal-header bg-light">
+          <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item" [ngbNavItem]="1">
+              <a ngbNavLink class="nav-link fw-medium" href="javascript:void(0);" data-bs-toggle="tab" role="tab"
+                aria-selected="true" style="text-align: center;">Calificar recurso</a>
+              <ng-template ngbNavContent>
+      
+                <form (ngSubmit)="calificarRecurso()" [formGroup]="calificacionForm" class="needs-validation tab-pane fade show" id="signin-tab">
+      
+                  <div class="row gy-3 mb-4 pb-md-3 mb-2">
+                    <div class="col-sm-6">
+                      <label class="form-label" for="profile-calificacion">
+                        Calificación
+                      </label>
+                      <select id="profile-calificacion" class="form-control" formControlName="calificacion">
+                        <option *ngFor="let item of listCalificacion" [value]="item.id" >{{ item.descripcion }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row gy-3 mb-4 pb-md-3 mb-2">      
+                    <div class="col-sm-12">
+                      <label class="form-label" for="profile-comentario">
+                        Comentario
+                      </label>
+                      <textarea class="form-control" id="profile-comentario" formControlName="comentario" type="text" placeholder=""></textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Calificar</button>
+                </form>
+              </ng-template>
+            </li>
+          </ul>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" (click)="closemodal()"></button>
+        </div>
+        <div class="modal-body tab-content py-4">
+          <div [ngbNavOutlet]="nav"></div>
+        </div>
+      </div>
+      <!-- </ng-template> -->
+      

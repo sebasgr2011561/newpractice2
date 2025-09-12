@@ -1,0 +1,85 @@
+<!-- Header -->
+<app-header></app-header>
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+    <app-account-breadcrumbs></app-account-breadcrumbs>
+</div>
+<div class="container mb-5 pb-3">
+    <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-lg-3 pe-xl-5">
+                <app-acount-sidemenu></app-acount-sidemenu>
+            </aside>
+            <!-- Content -->
+            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
+                <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+                    <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Crear nuevo usuario</h1>
+
+                    <form (ngSubmit)="saveUser()" [formGroup]="userForm">
+                        <div class="row gy-3 mb-4 pb-md-3 mb-2">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-name">
+                                    Rol
+                                </label>
+                                <select id="profile-rol" class="form-control" formControlName="rol">
+                                    <option value="">-- Selecciona un Rol --</option>
+                                    <option *ngFor="let item of roles" [value]="item.idRol" >{{ item.descripcion }}</option>
+                                  </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-name">
+                                    Nombre
+                                </label>
+                                <input class="form-control" formControlName="name" id="profile-name" type="text"
+                                    value="Robert Fox">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-lastname">
+                                    Apellido
+                                </label>
+                                <input class="form-control" id="profile-lastname" formControlName="lastname" type="text"
+                                    placeholder="">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-cellular">
+                                    Celular
+                                </label>
+                                <input class="form-control" id="profile-cellular" formControlName="cellular" type="text"
+                                    value="374702749">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-email">
+                                    Email
+                                </label>
+                                <input class="form-control" id="profile-email" formControlName="email" type="email"
+                                    value="example@gmail.com">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-password">
+                                    Contraseña
+                                </label>
+                                <input class="form-control" id="profile-password" formControlName="password" type="password">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="profile-bio">
+                                    Biografia
+                                </label>
+                                <textarea class="form-control" id="profile-bio" rows="4" formControlName="bio" placeholder=""></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="d-flex flex-sm-row flex-column">
+                            <button class="btn btn-accent" type="submit">
+                                Guardar perfil
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<app-footer></app-footer>

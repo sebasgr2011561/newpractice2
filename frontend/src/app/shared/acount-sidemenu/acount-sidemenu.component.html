@@ -1,0 +1,65 @@
+<!-- Account menu toggler (hidden on screens larger 992px)-->
+<div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" (click)="collapse.toggle()"><i class="ci-menu me-2"></i>Account menu</a></div>
+<!-- Actual menu-->
+<div class="h-100 border-end mb-2">
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="d-lg-block collapse" id="account-menu">
+        <ul class="list-unstyled mb-0" *ngIf="esAdministrador">
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/editar">
+                    <i class="fa-solid fa-user opacity-60 me-2"></i>Mi perfil
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/roles">
+                        <i class="fa-solid fa-user-tie opacity-60 me-2"></i>Roles
+                </a>
+              </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/usuarios">
+                    <i class="fa-solid fa-users opacity-60 me-2"></i>Usuarios
+                </a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled mb-0" *ngIf="esDocente">
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/dashboard/docente">
+                    <i class="fa-solid fa-chart-line opacity-60 me-2"></i>Dashboard
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/editar">
+                    <i class="fa-solid fa-user opacity-60 me-2"></i>Mi perfil
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/categories">
+                    <i class="fa-solid fa-layer-group opacity-60 me-2"></i>Categorias
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/product">
+                    <i class="fa-solid fa-book-bookmark opacity-60 me-2"></i>Recursos
+                </a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled mb-0" *ngIf="esEstudiante">
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/editar">
+                    <i class="fa-solid fa-user opacity-60 me-2"></i>Mi perfil
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/product">
+                    <i class="fa-solid fa-book-bookmark opacity-60 me-2"></i>Mis aprendizajes
+                </a>
+            </li>
+            <li class="border-bottom mb-0">
+                <a class="nav-link-style d-flex align-items-center px-4 py-3 menulist" routerLink="/mis-rutas">
+                    <i class="fa-solid fa-route opacity-60 me-2"></i>Mis rutas de aprendizaje
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

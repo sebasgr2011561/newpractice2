@@ -1,0 +1,30 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif; /* Fuente sans-serif para todo el cuerpo */
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Estilos para el texto específico */
+.elementor-heading-title {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2; /* Reducción del espacio entre líneas */
+  color: #54595f; /* Color gris oscuro */
+  font-weight: 300; /* Peso de la fuente ligero */
+  margin-bottom: 0; /* Eliminar margen inferior */
+
+}

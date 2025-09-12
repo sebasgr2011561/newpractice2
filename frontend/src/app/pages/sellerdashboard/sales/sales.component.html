@@ -1,0 +1,87 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+    <app-account-breadcrumbs></app-account-breadcrumbs>
+</div>
+
+<!-- contenet -->
+<div class="container mb-5 pb-3">
+    <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-lg-3 pe-xl-5">
+                <app-acount-sidemenu></app-acount-sidemenu>
+            </aside>
+
+            <!-- Content -->
+            <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+                <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+                    <h2 class="h3 py-2 text-center text-sm-start">Dashboard - Suscripciones</h2>
+                    
+                    <div class="row mx-n2">
+                        <div class="col-lg-8 px-2">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="fs-sm pb-3 mb-3 border-bottom">
+                                        Suscripciones activas
+                                    </h3>
+                                    <apx-chart class="apex-charts" dir="ltr" 
+                                    [series]="linewithDataChart?.series" 
+                                    [chart]="linewithDataChart?.chart" 
+                                    [colors]="linewithDataChart?.colors" 
+                                    [stroke]="linewithDataChart?.stroke" 
+                                    [dataLabels]="linewithDataChart?.dataLabels" 
+                                    [responsive]="linewithDataChart?.responsive" 
+                                    [legend]="linewithDataChart?.legend" 
+                                    [xaxis]="linewithDataChart?.xaxis" 
+                                    [yaxis]="linewithDataChart?.yaxis" 
+                                    [stroke]="linewithDataChart?.stroke" 
+                                    [markers]="linewithDataChart?.markers">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                            <div class="card mb-4 mb-lg-2" *ngIf="listDashboardInactive.length > 0">
+                                <div class="card-body">
+                                    <h3 class="fs-sm pb-3 mb-3 border-bottom">
+                                        Suscripciones inactivas
+                                    </h3>
+                                    <apx-chart class="apex-charts" dir="ltr" 
+                                    [series]="OrderCountChart?.series" 
+                                    [chart]="OrderCountChart?.chart" 
+                                    [colors]="OrderCountChart?.colors" 
+                                    [stroke]="OrderCountChart?.stroke" 
+                                    [dataLabels]="OrderCountChart?.dataLabels" 
+                                    [responsive]="OrderCountChart?.responsive" 
+                                    [legend]="OrderCountChart?.legend" 
+                                    [xaxis]="OrderCountChart?.xaxis" 
+                                    [yaxis]="OrderCountChart?.yaxis" 
+                                    [stroke]="OrderCountChart?.stroke" 
+                                    [markers]="OrderCountChart?.markers">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 px-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="fs-sm pb-3 mb-0 border-bottom">Tus cursos</h3>
+                                    <div class="d-flex justify-content-between align-items-center fs-sm py-2 border-bottom" *ngFor="let item of listDashboardActive">
+                                        <div class="d-flex align-items-start py-1">
+                                            <div class="ps-1">{{ item.nombreRecurso }}</div>
+                                        </div>
+                                        <span>{{ item.estudiantesRegistrados }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

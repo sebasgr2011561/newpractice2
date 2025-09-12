@@ -1,0 +1,92 @@
+<!-- Header -->
+<app-header></app-header>
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+    <app-breadcrumbs title="Nombre del recurso"></app-breadcrumbs>
+</div>
+
+<section class="container pb-md-4">
+    <!-- Product -->
+    <div class="bg-light shadow-lg rounded-3 px-4 py-lg-4 py-3 mb-5">
+        <div class="py-lg-3 py-2 px-lg-3">
+            <div class="row gy-4">
+                <!-- Product image -->
+                <div class="col-lg-6">
+                    <div class="position-relative rounded-3 overflow-hidden mb-lg-4 mb-2">
+                        <img class="rounded-circle mx-auto d-block" [src]="course!.imagenPortada" alt="Avatar" />
+                    </div>
+                    <div class="pt-2 text-lg-start text-center">
+                        <button class="btn btn-accent rounded-pill btn-icon me-sm-3 me-2" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Add to Favorites">
+                            <i class="ci-heart"></i>
+                        </button>
+                        <button class="btn btn-accent rounded-pill btn-icon me-sm-3 me-2" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Share">
+                            <i class="ci-share-alt"></i>
+                        </button>
+                        <button class="btn btn-accent rounded-pill btn-icon me-sm-3 me-2" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Flag">
+                            <i class="ci-flag"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Product details -->
+                <div class="col-lg-6">
+                    <div class="ps-xl-5 ps-lg-3">
+                        <!-- Meta -->
+                        <h2 class="h3 mb-3">{{ course.nombreRecurso }}</h2>
+                        <!-- Description -->
+                        <p class="mb-4 pb-md-2 fs-sm">
+                            {{ course.descripcion }}
+                        </p>
+                        <!-- Place a bid -->
+                        <!-- Product info -->
+                        <div class="pt-3">
+                            <!-- Nav tabs -->
+                            <div class="mb-4" style="overflow-x: auto">
+                                <ul ngbNav #nav="ngbNav" class="nav nav-tabs nav-fill flex-nowrap text-nowrap mb-1"
+                                    role="tablist">
+                                    <li class="nav-item" [ngbNavItem]="2">
+                                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+                                            Modulos
+                                        </a>
+                                        <ng-template ngbNavContent>
+                                            <!-- Properties -->
+                                            <div class="row row-cols-md-3 row-cols-2 g-3">
+                                                <div class="col" *ngFor="let item of modulos">
+                                                    <div class="card h-100">
+                                                        <div class="card-body p-3">
+                                                            <h5 class="mb-1 fs-sm">
+                                                                <a class="nav-link-style text-primary"
+                                                                    href="{{ item.urlmodulo }}">
+                                                                    {{ item.nombreModulo }}
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span></span>
+                                        </ng-template>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Tabs content -->
+                            <div class="tab-content">
+                                <div [ngbNavOutlet]="nav"></div>
+                            </div>
+                        </div>
+                        <a class="btn btn-lg btn-accent d-block w-100 mb-4" type="button" (click)="suscribirme()"
+                            href="javascript:void(0);" *ngIf="idPerfil === 3 && !botonSuscrito; else suscrito">
+                            Suscribirme a este Recurso
+                        </a>
+                        <ng-template #suscrito>
+                            <button class="btn btn-lg btn-accent d-block w-100 mb-4" type="button" disabled>Suscrito</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

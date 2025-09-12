@@ -1,0 +1,180 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Page Title -->
+<section class="bg-darker bg-size-cover bg-position-center py-5 py-lg-5" style="background-image: url(assets/img/food-delivery/hero-bg.png);">
+  <div class="container pb-1">
+    <div class="container py-md-4">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+          <li class="breadcrumb-item"><a class="text-nowrap" href="javascript:void(0);" routerLink="/"><i class="ci-home"></i>Home</a>
+          </li>
+          <li class="breadcrumb-item text-nowrap"><a href="javascript:void(0);">Recursos</a>
+          </li>
+          <li class="breadcrumb-item text-nowrap active" aria-current="page">Todos los Recursos</li>
+        </ol>
+      </nav>
+    </div>
+      <div class="row justify-content-center pb-1">
+          <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 text-center">
+              <div class="h2 text-light mb-3 pb-4">Plataforma E-learning para el Estudio &amp; Repaso de temas en ingenieria de software
+                  EducaTdeA
+                        
+              </div>
+              <!--<a class="btn btn-primary" href="javascript:void(0)" [ngxScrollTo]="'#cuisine'" data-scroll>Recursos de Estudio</a>
+                -->
+              </div>
+      </div>
+  </div>
+</section>
+
+<!-- Content -->
+<div class="container pb-5 mb-2 mb-md-4">
+  <!-- Toolbar -->
+  <div class="bg-light shadow-lg rounded-3 mt-n5 mb-4">
+    <div class="d-flex align-items-center ps-2">
+      <!-- Search -->
+      <div class="input-group">
+        <i class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
+        <input class="form-control border-0 shadow-none" type="text" [(ngModel)]="service.searchTerm" placeholder="Buscar en esta categoría...">
+      </div>
+      <!-- Sort -->
+      <div class="d-flex align-items-center">
+        <div ngbDropdown class="dropdown py-4 border-start">
+        </div>
+      </div>
+      <!-- Pagination -->
+
+      <ngb-pagination [collectionSize]="(total | async)!" [(page)]="service.page" [directionLinks]="false">
+        <ng-template ngbPaginationPages let-page let-pages="pages">
+          @if(pages.length > 0){
+          <li>
+            <div class="d-none d-md-flex align-items-center border-start ps-4">
+              <span class="fs-md text-nowrap me-4">
+                Pages&nbsp; {{service.page}} / {{pages.length}}
+              </span>
+              <a class="nav-link-style p-4 border-start" href="javascript:void(0)">
+                <span class="d-inline-block py-1">
+                  <i class="ci-arrow-left"></i>
+                </span>
+              </a>
+              <a class="nav-link-style p-4 border-start" href="javascript:void(0)">
+                <span class="d-inline-block py-1">
+                  <i class="ci-arrow-right"></i>
+                </span>
+              </a>
+            </div>
+          </li>
+          }
+        </ng-template>
+        <ng-template ngbPaginationPrevious let-page let-pages="pages">
+          <i class="ci-arrow-left me-2"></i>
+        </ng-template>
+        <ng-template ngbPaginationNext>
+          <i class="ci-arrow-right ms-2"></i>
+        </ng-template>
+      </ngb-pagination>
+    </div>
+  </div>
+
+
+  <!-- Products grid -->
+
+  <div class="row pt-3 mx-n2">
+    <!-- Product -->
+    @for(cat of products;track $index){
+    <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
+      <div class="card product-card-alt">
+        <div class="product-thumb">
+          <div class="product-card-actions">
+            <a  class="btn btn-light btn-icon btn-shadow fs-base mx-2" data-bs-target="#quick-view" data-bs-toggle="modal" (click)="openModal(content,$index)" ngbTooltip="View" >
+              <i class="ci-eye"></i>
+            </a>
+          </div>
+          <a class="product-thumb-overlay" href="javascript:void(0)" routerLink="/single"></a>
+          <img src="{{cat.imagenPortada}}" alt="Product">
+        </div>
+        <div class="card-body">
+          <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+            <div class="star-rating me-2">
+              <ng-template #t let-fill="fill">
+                <span class="star" [class.full]="fill === 100">
+                  <span class="half" [style.width.%]="fill">
+                    ★
+                  </span>
+                  ☆
+                </span>
+              </ng-template>
+              <ngb-rating class="d-inline-flex stars align-middle star-rating" [(rate)]="cat.rate" [starTemplate]="t" [readonly]="true" [max]="5">
+              </ngb-rating>
+            </div>
+          </div>
+          <h3 class="product-title fs-sm mb-2">
+            <a href="javascript:void(0)" (click)="redirectToAuctionLive(cat.idRecurso)">{{cat.nombreRecurso}}</a>
+          </h3>
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <div class="fs-sm me-2">
+              <!-- Pagination <span class="fs-xs ms-1">Duracion: {{cat.sale}}</span>-->
+            </div>
+            <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">Duracion: {{cat.duracion}} Horas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+  </div>
+  <hr class="my-3">
+  <!-- Pagination -->
+
+  <ngb-pagination class="d-flex justify-content-center pt-2" [collectionSize]="(total | async)!" [(page)]="service.page" [pageSize]="service.pageSize" aria-label="Custom pagination">
+    <ng-template ngbPaginationPrevious let-page let-pages="pages">
+      <i class="ci-arrow-left me-2"></i>
+      Prev
+    </ng-template>
+    <ng-template ngbPaginationNext>
+      Next
+      <i class="ci-arrow-right ms-2"></i>
+    </ng-template>
+  </ngb-pagination>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>
+
+<ng-template #content role="document" let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">{{productdetail.nombreRecurso}}</h4>
+      <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"
+        (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <!-- Product gallery-->
+        <div class="col-lg-7 col-md-6 pe-lg-0"><img src="{{productdetail.imagenPortada}}" alt="image"></div>
+        <!-- Product details-->
+        <div class="col-lg-5 col-md-6 pt-4 pt-lg-0">
+          <div class="product-details ms-auto pb-3">
+            <p class="h5 mb-2 pb-md-2 fs-sm bg-faded-accent text-accent rounded-1 px-5">
+              Descripcion del curso
+          </p>
+            <div class="mb-3"><span class="fs-sm me-1">{{productdetail.descripcion}}</span></div>
+            <form class="mb-grid-gutter">
+            </form>
+            <h5 class="h6 mb-3 pb-3 border-bottom"><i
+                class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Información</h5>
+            <h6 class="fs-sm mb-2">Duración:</h6>
+            <p class="fs-sm">{{productdetail.duracion}} Horas</p>
+            <h6 class="fs-sm mb-2">Precio:</h6>
+            <p class="fs-sm">{{productdetail.precio | currency}}</p>
+          </div>
+          <div *ngIf="idRol === 3">
+            <button class="btn btn-primary btn-shadow d-block w-100" type="submit"
+            (click)="modal.dismiss('Cross click')"><i class="ci-cart fs-lg me-2"></i>Suscribirme</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

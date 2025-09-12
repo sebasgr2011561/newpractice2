@@ -1,0 +1,114 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Page Title -->
+<div class="page-title-overlap bg-accent pt-4">
+  <app-account-breadcrumbs></app-account-breadcrumbs>
+</div>
+
+<!-- Content -->
+<div class="container mb-5 pb-3">
+  <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+    <div class="row">
+      <!-- Sidebar -->
+      <aside class="col-lg-3 pe-xl-5">
+        <app-acount-sidemenu></app-acount-sidemenu>
+      </aside>
+      <!-- Content -->
+      <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+        <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+          <!-- Title -->
+          <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
+            <h2 class="h3 py-2 me-2 text-center text-sm-start">Agregar un Nuevo Recurso</h2>
+            <!-- Categoria -->
+          </div>
+          <!-- formulario creacion recurso -->
+          <form method="post" (ngSubmit)="AddProduct()" [formGroup]="recursoForm">
+            <div class="mb-md-5 mb-4 pb-md-0 pb-2">
+              <div class="row gy-md-4 gy-3">
+                  <div class="col-sm-6">
+                    <label class="form-label" for="profile-name">
+                      Categoría
+                    </label>
+                    <select id="profile-rol" class="form-control" formControlName="idCategoria">
+                      <option *ngFor="let item of categorias" [value]="item.idCategoria" >{{ item.nombreCategoria }}</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+
+            <div class="mb-3 pb-2">
+              <label class="form-label" for="unp-product-name">
+                Nombre del Recurso
+              </label>
+              <input class="form-control" type="text" id="unp-product-name" formControlName="nombreRecurso">
+              <div class="form-text">
+                Maximo 100 caracteres. No permitido HTML o Emojis.
+              </div>
+            </div>
+
+            <div class="mb-md-5 mb-4 pb-md-0 pb-2">
+              <h2 class="h5 mb-2 pb-1">Imagen de Portada Recurso</h2>
+              <!-- Drag and drop file upload-->
+              <ngx-dropzone class="file-drop-area" (change)="onSelect($event)">
+                  <ngx-dropzone-label>
+                      <div class="file-drop-icon ci-cloud-upload"></div>
+                      <span class="file-drop-message">Arrastra y suelta aquí para subir la imagen de portada para el recurso</span>
+                  </ngx-dropzone-label>
+                  @for(f of files;track $index){
+                  <ngx-dropzone-preview [removable]="true" (removed)="onRemove(f)">
+                      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-preview>
+                  }
+              </ngx-dropzone>
+              <p class="mb-4 fs-sm">Tipos de formatos permitidos: PNG, JPG, GIF, WEBP, MP3 or MP4. Tamaño max: 100mb.</p>
+            </div>
+
+            <div class="mb-3 py-2">
+              <label class="form-label" for="unp-product-description">
+                Descripcion del recurso
+              </label>
+              <textarea class="form-control" rows="3" id="unp-product-description" formControlName="descripcion"></textarea>
+            </div>
+
+            <div class="mb-3 pb-2">
+              <label class="form-label" for="unp-product-name">
+                Duración
+              </label>
+              <input class="form-control" type="number" id="unp-product-name" formControlName="duracion">
+            </div>
+
+            <div class="mb-3 pb-2">
+              <label class="form-label" for="unp-product-name">
+                Precio
+              </label>
+              <input class="form-control" type="number" id="unp-product-name" formControlName="precio">
+            </div>
+            <button class="btn btn-primary d-block w-100" [disabled]="!isActive" type="submit" *ngIf="idRecurso === 0">
+              <i class="ci-cloud-upload fs-lg me-2"></i>
+              {{ messageButton }}
+            </button>
+          </form>
+          <br>
+          <div class="tab-pane fade mb-4 pb-2 show" id="price-fix" role="tabpanel" *ngIf="idRecurso > 0;else recursoGuardado">
+            <button class="btn btn-primary d-block w-100" [disabled]="isActive" type="submit" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal()">
+              <i class="ci-cloud-upload fs-lg me-2"></i>
+              Lecciones y modulos
+            </button>
+          </div>
+          <ng-template #recursoGuardado>
+            <div class="tab-pane fade mb-4 pb-2 show" id="price-fix" role="tabpanel" *ngIf="idRecurso === 0 && (idRecursoParam !==0 && idRol === 2)">
+              <button class="btn btn-primary d-block w-100" [disabled]="isActive" type="submit" data-bs-toggle="modal" data-bs-target="#showModal" (click)="openModal()">
+                <i class="ci-cloud-upload fs-lg me-2"></i>
+                Lecciones y modulos
+              </button>
+            </div>
+          </ng-template>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>
